@@ -4,10 +4,9 @@ const express = require('express')
 const app = express();
 
 const pubHandler = require('./app/handler/publicacion')
-const commonHandler = require('./app/handler/common')
+const commonHandler = require('./app/handler/login')
 const userHandler = require('./app/handler/usuario')
 
-app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

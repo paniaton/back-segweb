@@ -1,5 +1,5 @@
 const db = require("../../../config/mySQLconnection")
-const { findAllUsers, findOneUser } = require("./queries")
+const { findAllUsers, findOneUser, findUserSesion } = require("./queries")
 
 exports.findAll = async function () {
     const results = await db.query(findAllUsers);
@@ -7,9 +7,11 @@ exports.findAll = async function () {
 }
 
 exports.findOne = async function (id) {
-    console.log(id)
-    const result = await db.query(findOneUser, id);
-    console.log(result)
-    return result[0];
+    const results = await db.query(findOneUser, id);
+    return results[0];
 }
 
+exports.findUserSession = async(session_id, token) => {
+    const results = await db.query(findUserSesion,[session_id, token]);
+    return results[0];
+}

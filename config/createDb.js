@@ -11,10 +11,11 @@ const createDB = `SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
         nombre VARCHAR(16) NOT NULL,
         direccion VARCHAR(255) NULL DEFAULT NULL,
         password VARCHAR(255) NOT NULL,
-        estado VARCHAR(255) NOT NULL,
+        estado VARCHAR(255) NOT NULL DEFAULT "activo",
         fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         fecha_modificacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         motivo VARCHAR(255) NULL DEFAULT NULL,
+        admin tinyint(1) NOT NULL DEFAULT 0,
         mail VARCHAR(255) NULL DEFAULT NULL,
         cbu VARCHAR(255) NULL DEFAULT NULL,
         PRIMARY KEY (id))
@@ -25,7 +26,7 @@ const createDB = `SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
         id INT(11) NOT NULL AUTO_INCREMENT,    
         nombre VARCHAR(16) NOT NULL,
         descripcion VARCHAR(255) NULL DEFAULT NULL,
-        estado VARCHAR(32) NOT NULL,
+        estado VARCHAR(32) NOT NULL DEFAULT "pendiente",
         fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         usuario_id INT(11) NOT NULL,
             PRIMARY KEY (id),
@@ -33,6 +34,13 @@ const createDB = `SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
             CONSTRAINT child_ibfk_1 FOREIGN KEY (usuario_id)
             REFERENCES usuario (id) ON DELETE CASCADE
         ) 
+        ENGINE = InnoDB
+        DEFAULT CHARACTER SET = utf8;
+
+        CREATE TABLE IF NOT EXISTS saw_db.sesion (
+        id INT(11) NOT NULL AUTO_INCREMENT,    
+        token VARCHAR(255) NOT NULL,
+        PRIMARY KEY (id))
         ENGINE = InnoDB
         DEFAULT CHARACTER SET = utf8;
         

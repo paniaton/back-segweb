@@ -1,7 +1,8 @@
 const service = require("../../app/internal/publicacion/service")
 
 module.exports = function (app) {
-    app.get('/publicaciones', async (req, res) => {
+
+    app.get('/api/v1/publicaciones', async (req, res) => {
         try {
             let answer = await service.findAll()
             res.status(200).json(answer);
@@ -11,7 +12,7 @@ module.exports = function (app) {
         }
     });
 
-    app.post('/publicaciones/:publicacionId/cambiarEstado',  async (req, res) => { /*Middleware - ADMIN*/
+    app.post('/api/v1/publicaciones/:publicacionId/cambiarEstado',  async (req, res) => { /*Middleware - ADMIN*/
         try {
             const pubId = req.params.publicacionId;
             const estado = req.body.estado;
