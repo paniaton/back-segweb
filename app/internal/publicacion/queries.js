@@ -7,6 +7,9 @@ const udpatePublicacionState = `UPDATE saw_db.publicacion
     SET estado = ? 
     WHERE id = ?`;
 
+const createPublicacion = `INSERT INTO saw_db.publicacion (nombre, descripcion, usuario_id) VALUES (?,?,?)`;
+
 
 exports.findAllPubs = findAllPubs;
 exports.udpatePublicacionState = udpatePublicacionState;
+exports.createPublicacion = createPublicacion;

@@ -10,6 +10,7 @@ exports.validatePassword = async (username,externalPassword) => {
     var resultArray = Object.values(JSON.parse(JSON.stringify(rows)))
     if(helpers.matchPassword(resultArray[0].password,externalPassword)) {
         let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+        console.log(resultArray[0].admin)
         let insertId = await repo.createUserSession(token, resultArray[0].admin) 
         return { session_id: insertId, token: token }
 

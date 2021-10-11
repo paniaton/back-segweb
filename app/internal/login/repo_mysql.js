@@ -6,7 +6,7 @@ exports.findOneByMail = async function (mail) {
     return result[0];
 }
 
-exports.findUserPass = async function (mail) {
+exports.findUserPassAndType = async function (mail) {
     const result = await db.query(findUserPass, mail);
     return result[0];
 }

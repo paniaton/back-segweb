@@ -15,3 +15,4 @@ exports.findUserSession = async(session_id, token) => {
     const results = await db.query(findUserSesion,[session_id, token]);
     return results[0];
 }
+
