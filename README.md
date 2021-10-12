@@ -21,16 +21,8 @@ El endpoint de Login tiene el username saneado para prevenir inyecciones SQL. So
 Accesibles por todos, no logeados, ususarios, y admines
 
 POST /login 
-body: 
-    {
-        "username": "admin@gmail.com",
-        "password": "123456"
-    }
-res: 
-    {
-        "token": "23lk2ñ4lklñ",
-        "sesion": 1
-    }
+- body: { "username": "admin@gmail.com", "password": "123456" }
+- res: { "token": "23lk2ñ4lklñ", "sesion": 1 }
 
 GET /api/v1/publicaciones 
 
@@ -40,36 +32,15 @@ GET /api/v1/publicaciones
 Logeado como USUARIO
 
 POST /api/v1/publicaciones 
-"header":
-	{
-        "Token" : "1xz3hhdixp9iis4sa1hji1d",
-        "Sesion": "1"
-	}
-
-"body": 
-    {
-	    "nombre": "pub prueba",
-        "descripcion": "pub de prueba",
-        "usuario_id": 1
-    },
+- "header": { "Token" : "1xz3hhdixp9iis4sa1hji1d", "Sesion": "1" }
+- "body": { "nombre": "pub prueba", "descripcion": "pub de prueba", "usuario_id": 1 },
 
 ### Admin
 Logeado como ADMIN
 
 GET /api/v1/usuarios
-"header":
-	{
-        "Token" : "1xz3hhdixp9iis4sa1hji1d",
-        "Sesion": "1"
-	}
+- "header": { "Token" : "1xz3hhdixp9iis4sa1hji1d", "Sesion": "1" }
 
 PATCH /api/v1/publicaciones/{publicacion_id}/cambiarEstado
-"header":
-	{
-        "Token" : "1xz3hhdixp9iis4sa1hji1d",
-        "Sesion": "1"
-	}
-"body":
-    {
-        "estado": "aprobada"
-    }
+- "header": { "Token" : "1xz3hhdixp9iis4sa1hji1d", "Sesion": "1" }
+- "body": { "estado": "aprobada" }
