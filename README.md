@@ -10,8 +10,8 @@ El servicio queda accesible por *localhost:3000*
 
 ## Cuentas
 
-Admin: admin@gmail.com / 123456
-User: user@gmail.com /123456
+- Admin: admin@gmail.com / 123456
+- User: user@gmail.com /123456
 
 ## Endpoints
 Todos los casos no representados abajo estan handleados con sus correspondientes errores 40X 
