@@ -5,6 +5,7 @@
 ## Config
 
 Ejecutar docker-compose up para levantar la base y el server. La estructura de la base y los datos se crean durante el mismo proceso.
+
 En caso de querer acceder a la base, una vez levantado los contenedores se accede a la misma a traves del puerto 33061, user: root y pass: root
 El servicio de node queda accesible por *localhost:3000*
 
