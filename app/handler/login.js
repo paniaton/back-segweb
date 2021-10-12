@@ -8,15 +8,20 @@ module.exports = function (app) {
     
     app.post('/login',  async (req, res) => {
         try {
-            console.log("LOGIN")
             let {username, password} = req.body
-            if (!username) 
+            if (!username) {
                 res.status(404).json({message: "missing username"});
-            if (!password) 
+                return;
+            }
+            if (!password) {
                 res.status(404).json({message: "missing password"});
+                return;
+            }
+
 
             if(!service.validateUsernameFormat(username)) {
                 res.status(404).json({message: "username does not meet the required format"});
+                return;
             }
 
             const value = await service.validatePassword(username,password);

@@ -29,7 +29,7 @@ module.exports = function (app) {
         }
     });
 
-    app.post('/api/v1/publicaciones/:publicacionId/cambiarEstado', async (req, res, next) => auth.isLoggedIn(req, res, next), async (req, res) => { /*Middleware - ADMIN*/
+    app.patch('/api/v1/publicaciones/:publicacionId/cambiarEstado', async (req, res, next) => auth.isAdmin(req, res, next), async (req, res) => { /*Middleware - ADMIN*/
         try {
             const pubId = req.params.publicacionId;
             const estado = req.body.estado;

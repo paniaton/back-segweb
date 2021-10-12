@@ -3,7 +3,7 @@ const auth = require("../lib/auth")
 
 module.exports = function (app) {
 
-    app.use('/api/v1/usuarios', async (req, res, next) => auth.isLoggedIn(req, res, next));
+    app.use('/api/v1/usuarios', async (req, res, next) => auth.isAdmin(req, res, next));
 
     app.get('/api/v1/usuarios', async (req, res) => { /*Middleware - ADMIN*/
         try {

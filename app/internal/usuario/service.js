@@ -11,7 +11,5 @@ exports.findOne = async (userId) => {
 exports.findUserSession = async(session_id, token) => {
     const rows = await repo.findUserSession(session_id, token); 
     var resultArray = Object.values(JSON.parse(JSON.stringify(rows)))
-    if(resultArray.length==0)
-        return 0
-    return resultArray[0].admin
+    return resultArray[0]
 }

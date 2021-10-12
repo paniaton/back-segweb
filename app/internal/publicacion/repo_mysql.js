@@ -6,9 +6,8 @@ exports.findAll = async () => {
 }
 
 exports.actualizarEstadoPublicacion = async (pubId, estado) => {
-    console.log(pubId)
-    console.log(estado)
-    await db.query(udpatePublicacionState, [estado, pubId]);
+    const results = await db.query(udpatePublicacionState, [estado, pubId]);
+    return results[0];
 }
 
 exports.createPublicacion = async (nombre, descripcion, usuario_id) => {
