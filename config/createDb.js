@@ -106,17 +106,23 @@ const user = `INSERT INTO saw_db.usuario (nombre, direccion, password, mail, cbu
 const pub1 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuario_id) VALUES ('Pub 1','Pub 1','aprobada', 1);`
 const pub2 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuario_id) VALUES ('Pub 2','Pub 2','aprobada', 1);`
 
+const findAllUsers = `SELECT * FROM saw_db.sesion;`;
 
-exports.init = () => {
-    setTimeout( () => {
-        db.query(createUser);  
-        db.query(createPubs);  
-        db.query(createSesion);
-    }, 20000);
-    setTimeout( () => {
-        db.query(admin);  
-        db.query(user);  
-        db.query(pub1);
-        db.query(pub2);
-    }, 25000);
+exports.init = async () => {
+    try{
+        await db.query(findAllUsers);
+     } catch (e) {
+        console.log("Inicializando la estructura de la DB")
+        setTimeout( () => {
+            db.query(createUser);  
+            db.query(createPubs);  
+            db.query(createSesion);
+        }, 20000);
+        setTimeout( () => {
+            db.query(admin);  
+            db.query(user);  
+            db.query(pub1);
+            db.query(pub2);
+        }, 25000);
+     }
 };
