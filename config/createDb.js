@@ -95,6 +95,7 @@ const createSesion = `
 CREATE TABLE IF NOT EXISTS saw_db.sesion (
     id INT(11) NOT NULL AUTO_INCREMENT,    
     token VARCHAR(255) NOT NULL,
+    admin tinyint(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (id))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
@@ -108,8 +109,14 @@ const pub2 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuar
 
 exports.init = () => {
     setTimeout( () => {
-        db.query(createPubs);  
         db.query(createUser);  
+        db.query(createPubs);  
         db.query(createSesion);
     }, 20000);
+    setTimeout( () => {
+        db.query(admin);  
+        db.query(user);  
+        db.query(pub1);
+        db.query(pub2);
+    }, 25000);
 };

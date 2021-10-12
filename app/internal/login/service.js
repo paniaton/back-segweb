@@ -7,7 +7,10 @@ exports.validateUsernameFormat = async(username) => {
 
 exports.validatePassword = async (username,externalPassword) => {
     let rows = await repo.findUserPassAndType(username);
-    var {password, nombre, id, admin } = Object.values(JSON.parse(JSON.stringify(rows)))[0]
+    var user = Object.values(JSON.parse(JSON.stringify(rows)))[0]
+    if(!user) return false
+    
+    let {password, nombre, id, admin } = user;
     if(helpers.matchPassword(password,externalPassword)) {
         let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
         let insertId = await repo.createUserSession(token, admin) 
