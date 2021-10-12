@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require('express')
 const app = express();
+const db = require("./config/createDb")
 
 const pubHandler = require('./app/handler/publicacion')
 const commonHandler = require('./app/handler/login')
@@ -9,6 +10,8 @@ const userHandler = require('./app/handler/usuario')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+db.init()
 
 commonHandler(app);
 userHandler(app);

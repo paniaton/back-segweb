@@ -10,7 +10,12 @@ services:
         MYSQL_DATABASE: $MYSQL_DATABASE
     ports:
         - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+    volumes:
+        - ./scripts:/home/oracle/setup/custom_scripts
   app:
+    depends_on: 
+        - mysqldb
+    restart: unless-stopped
     build:
         context: .
     env_file: ./.env
@@ -20,7 +25,6 @@ services:
         - ./app/node_modules
     ports:
         - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-    depends_on: 
-        - mysqldb
+
     environment: 
         MYSQL_HOST: mysqldb
