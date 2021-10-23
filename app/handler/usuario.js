@@ -5,7 +5,7 @@ module.exports = function (app) {
 
     app.use('/api/v1/usuarios', async (req, res, next) => auth.isAdmin(req, res, next));
 
-    app.get('/api/v1/usuarios', async (req, res) => { /*Middleware - ADMIN*/
+    app.get('/api/v1/usuarios', async (req, res) => { 
         try {
             const users = await service.findAll();
             res.status(200).json(users);
@@ -15,7 +15,7 @@ module.exports = function (app) {
         }
     });
 
-    app.get('/api/v1/usuarios/:userId', async (req, res) => { /*Middleware - ADMIN*/
+    app.get('/api/v1/usuarios/:userId', async (req, res) => {
         try {
             const userId = req.params.userId
             const userState = await service.findOne(userId);

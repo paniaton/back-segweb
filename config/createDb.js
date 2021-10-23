@@ -105,6 +105,8 @@ const admin = `INSERT INTO saw_db.usuario (nombre, direccion, admin, password, m
 const user = `INSERT INTO saw_db.usuario (nombre, direccion, password, mail, cbu) VALUES ('Enzo Perez','AV evergreen 123','123456', 'user@gmail.com', '243423434');`
 const pub1 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuario_id) VALUES ('Pub 1','Pub 1','aprobada', 1);`
 const pub2 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuario_id) VALUES ('Pub 2','Pub 2','aprobada', 1);`
+const pub3 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuario_id) VALUES ('Pub 3','Pub 3','aprobada', 2);`
+const pub4 = `INSERT INTO saw_db.publicacion (nombre, descripcion, estado, usuario_id) VALUES ('Pub 4','Pub 4','pendiente', 2);`
 
 const findAllUsers = `SELECT * FROM saw_db.sesion;`;
 
@@ -121,8 +123,12 @@ exports.init = async () => {
         setTimeout( () => {
             db.query(admin);  
             db.query(user);  
+        }, 25000);
+        setTimeout( () => {
             db.query(pub1);
             db.query(pub2);
-        }, 25000);
+            db.query(pub3);
+            db.query(pub4);
+        }, 30000);
      }
 };
