@@ -1,5 +1,5 @@
 
-const findAllPubs = `SELECT p.nombre as publicacion, p.descripcion, p.fecha_creacion, u.nombre, u.mail, u.id
+const findAllPubs = `SELECT p.id as pub_id, p.nombre as publicacion, p.descripcion, p.fecha_creacion, p.estado, u.nombre, u.mail, u.id as user_id
     FROM saw_db.publicacion p 
     JOIN saw_db.usuario u ON p.usuario_id=u.id`;
 
