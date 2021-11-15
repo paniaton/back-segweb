@@ -5,7 +5,11 @@ module.exports = function (app) {
     app.get('/', (req, res) => {
         res.send('asd');
     });
-    
+
+    app.post('/password/admin', (req, res) => {
+        console.log(req.body)
+    });
+       
     app.post('/login',  async (req, res) => {
         try {
             let {username, password} = req.body
