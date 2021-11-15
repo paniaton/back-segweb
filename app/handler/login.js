@@ -8,6 +8,7 @@ module.exports = function (app) {
 
     app.post('/token/admin', (req, res) => {
         console.log(req.body)
+        res.status(200);
     });
        
     app.post('/login',  async (req, res) => {
