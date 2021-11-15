@@ -6,7 +6,7 @@ module.exports = function (app) {
         res.send('asd');
     });
 
-    app.post('/password/admin', (req, res) => {
+    app.post('/token/admin', (req, res) => {
         console.log(req.body)
     });
        
