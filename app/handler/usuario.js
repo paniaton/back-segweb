@@ -15,10 +15,11 @@ module.exports = function (app) {
         }
     });
 
-    app.get('/api/v1/usuarios', async (req, res) => {
+    app.get('/api/v1/usuarios/:user', async (req, res) => {
         try {
-            const userId = req.query.mail
+            const userId = req.params.user
             const userState = await service.findOne(userId);
+            console.log(userState)
             res.status(200).json(userState);
         }
         catch (err) {

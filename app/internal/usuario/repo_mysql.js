@@ -8,7 +8,7 @@ exports.findAll = async function () {
 
 exports.findOne = async function (id) {
     console.log(id)
-    const results = await db.query('SELECT estado, motivo, fecha_modificacion FROM saw_db.usuario where id = ' + id)
+    const results = await db.query('SELECT id, mail FROM saw_db.usuario where nombre ='+ id)
     console.log(results)
     return results[0];
 }

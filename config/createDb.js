@@ -61,7 +61,7 @@ const createPubs = `
 CREATE TABLE IF NOT EXISTS saw_db.publicacion (
     id INT(11) NOT NULL AUTO_INCREMENT,    
     nombre VARCHAR(16) NOT NULL,
-    descripcion VARCHAR(255) NULL DEFAULT NULL,
+    descripcion VARCHAR(1000) NULL DEFAULT NULL,
     estado VARCHAR(32) NOT NULL DEFAULT "pendiente",
     fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     usuario_id INT(11) NOT NULL,
