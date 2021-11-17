@@ -15,9 +15,9 @@ module.exports = function (app) {
         }
     });
 
-    app.get('/api/v1/usuarios/:userId', async (req, res) => {
+    app.get('/api/v1/usuarios', async (req, res) => {
         try {
-            const userId = req.params.userId
+            const userId = req.query.mail
             const userState = await service.findOne(userId);
             res.status(200).json(userState);
         }
